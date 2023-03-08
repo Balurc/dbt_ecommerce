@@ -31,6 +31,10 @@ This repo contains my dbt project using Brazilian ecommerce public dataset by Ol
 8. In the analytics_brazilian_ecommerce database, create 2 schemas named; staging and marts. 
 
 
+# GitHub secrets
+1. Copy your profiles.yml in your .dbt/ folder into the root of your dbt project or create one if it doesn’t exist already. Enter the connection details for your data platform in the profiles.yml file.
+2. 
+
 # Notes
 if .gitignore not working:
 - git rm -rf --cached .
