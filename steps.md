@@ -11,3 +11,10 @@
 11. If all checks have passed, run: dbt run.
 12. For more on installing dbt, please visit this guide: https://docs.getdbt.com/docs/get-started/installation.
 13. git add ., git commit and git push.
+
+# Notes
+if .gitignore not working:
+git rm -rf --cached .
+git add .
+git commit -m ".gitignore is now working"
+git push
