@@ -10,4 +10,4 @@
 10. Ensure your profile is setup correctly with the following command: dbt debug.
 11. If all checks have passed, run: dbt run.
 12. For more on installing dbt, please visit this guide: https://docs.getdbt.com/docs/get-started/installation.
-13.
+13. git add ., git commit and git push.
