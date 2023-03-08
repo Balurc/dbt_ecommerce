@@ -24,8 +24,8 @@ This repo contains my dbt project using Brazilian ecommerce public dataset by Ol
 1. Download the datasets for Olist <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">commercial operations here</a> and <a href="https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist">marketing funnel here</a>.
 2. Create a database named raw_brazilian_ecommerce. This database will store the raw data that you just downloaded.
 3. In the raw_brazilian_ecommerce database, create 2 schemas named; commercial and funnel.
-4. Import <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">the commercial datasets</a> into raw_brazilian_ecommerce database in commercial schema with these SQL queries.
-5. Import <a href="https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist">the marketing funnel datasets</a>into raw_brazilian_ecommerce database in funnel schema with these SQL queries.
+4. Import <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">the commercial datasets</a> into raw_brazilian_ecommerce database in commercial schema with <a href="https://github.com/Balurc/dbt_ecommerce/blob/main/load_data_sql_query/commercial/commercial.sql">these SQL queries</a>.
+5. Import <a href="https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist">the marketing funnel datasets</a> into raw_brazilian_ecommerce database in funnel schema with <a href="https://github.com/Balurc/dbt_ecommerce/blob/main/load_data_sql_query/funnel/funnel.sql">these SQL queries</a>.
 6. The above SQL queries will create a table for each dataset/csv that you have downloaded and load/import the csv (data) with the COPY command to each table.
 7. Create a database named analytics_brazilian_ecommerce. This database will store the transformed data.
 8. In the analytics_brazilian_ecommerce database, create 2 schemas named; staging and marts. 
@@ -33,7 +33,7 @@ This repo contains my dbt project using Brazilian ecommerce public dataset by Ol
 
 # Notes
 if .gitignore not working:
-git rm -rf --cached .
-git add .
-git commit -m ".gitignore is now working"
-git push
+- git rm -rf --cached .
+- git add .
+- git commit -m ".gitignore is now working"
+- git push
