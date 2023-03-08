@@ -8,34 +8,38 @@ on:
   #   - cron: "0 7 * * *"
 
 env:
-  DBT_PROFILES_DIR: dbt_brazilian_ecommerce/
+  DBT_PROFILES_DIR: ./
   DBT_POSTGRES_HOST: ${{ secrets.DBT_POSTGRES_HOST }}
   DBT_POSTGRES_PORT: ${{ secrets.DBT_POSTGRES_PORT }}
   DBT_POSTGRES_USER: ${{ secrets.DBT_POSTGRES_USER }}
   DBT_POSTGRES_PW: ${{ secrets.DBT_POSTGRES_PW }}
 
 jobs:
-   schedule_dbt_job:
-       name: schedule_dbt_job
-       runs-on: ubuntu-latest
+  schedule_dbt_job:
+    name: schedule_dbt_job
+    runs-on: ubuntu-latest
 
-       steps:
-       - name: Checkout repository
-         uses: actions/checkout@master
+    defaults:
+      run:
+        working-directory: dbt_brazilian_ecommerce
 
-       - name: Set up Python
-         uses: actions/setup-python@v2
-         with:
-           python-version: "3.8.16"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
 
-       - name: Install dependencies
-         run: |
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8.16"
+
+      - name: Install dependencies
+        run: |
            pip install dbt-postgres
            dbt deps
 
        # dbt related commands here - run use --target prod/dev to run for specific environments
-       - name: Run dbt models
-         run: dbt run
+      - name: Run dbt models
+        run: dbt run
 
-       - name: Test dbt models
-         run: dbt test
+      - name: Test dbt models
+        run: dbt test
