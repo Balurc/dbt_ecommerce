@@ -1,3 +1,4 @@
 my_dbt_env/
 logs/
+dbt_brazilian_ecommerce/.user.yml
 set_env_var.sh
