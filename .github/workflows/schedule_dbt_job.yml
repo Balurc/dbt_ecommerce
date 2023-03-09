@@ -34,7 +34,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-           pip install dbt-postgres
+           pip install dbt-snowflake
            dbt deps
 
        # dbt related commands here - run use --target prod/dev to run for specific environments
