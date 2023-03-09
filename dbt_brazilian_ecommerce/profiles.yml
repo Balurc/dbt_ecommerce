@@ -1,21 +1,50 @@
+# dbt_brazilian_ecommerce:
+#   outputs:
+#     dev:
+#       type: postgres
+#       threads: 1
+#       host: "{{ env_var('DBT_POSTGRES_HOST') }}"
+#       port: "{{ env_var('DBT_POSTGRES_PORT') | as_number }}"
+#       user: "{{ env_var('DBT_POSTGRES_USER') }}"
+#       pass: "{{ env_var('DBT_POSTGRES_PW') }}"
+#       dbname: analytics_brazilian_ecommerce
+#       schema: marts
+#     prod:
+#       type: postgres
+#       threads: [1 or more]
+#       host: [host]
+#       port: [port]
+#       user: [prod_username]
+#       pass: [prod_password]
+#       dbname: [dbname]
+#       schema: [prod_schema]
+#   target: dev
+
+
 dbt_brazilian_ecommerce:
+  target: dev
   outputs:
     dev:
-      type: postgres
-      threads: 1
-      host: "{{ env_var('DBT_POSTGRES_HOST') }}"
-      port: "{{ env_var('DBT_POSTGRES_PORT') | as_number }}"
-      user: "{{ env_var('DBT_POSTGRES_USER') }}"
-      pass: "{{ env_var('DBT_POSTGRES_PW') }}"
-      dbname: analytics_brazilian_ecommerce
+      type: snowflake
+      # account: xn76928.ca-central-1.aws
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+
+      # User/password auth
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_SNOWFLAKE_PW') }}"
+      # user: dbt_core_user
+      # password: abc123
+
+      role: transformer
+      database: analytics_brazilian_ecommerce
+      warehouse: transforming
       schema: marts
-    prod:
-      type: postgres
-      threads: [1 or more]
-      host: [host]
-      port: [port]
-      user: [prod_username]
-      pass: [prod_password]
-      dbname: [dbname]
-      schema: [prod_schema]
-  target: dev
+      threads: 1
+      client_session_keep_alive: False
+      # query_tag: github_action_query
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false 
+      retry_all: False  # default: false

@@ -9,10 +9,10 @@ on:
 
 env:
   DBT_PROFILES_DIR: ./
-  DBT_POSTGRES_HOST: ${{ secrets.DBT_POSTGRES_HOST }}
-  DBT_POSTGRES_PORT: ${{ secrets.DBT_POSTGRES_PORT }}
-  DBT_POSTGRES_USER: ${{ secrets.DBT_POSTGRES_USER }}
-  DBT_POSTGRES_PW: ${{ secrets.DBT_POSTGRES_PW }}
+  DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_SNOWFLAKE_ACCOUNT }}
+  DBT_SNOWFLAKE_USER: ${{ secrets.DBT_SNOWFLAKE_USER }}
+  DBT_SNOWFLAKE_PW: ${{ secrets.DBT_SNOWFLAKE_PW }}
+  # DBT_POSTGRES_PW: ${{ secrets.DBT_POSTGRES_PW }}
 
 jobs:
   schedule_dbt_job:
