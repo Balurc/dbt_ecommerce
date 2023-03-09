@@ -1,3 +1,2 @@
-dbt-postgres
-# dbt-snowflake
+dbt-snowflake
 sqlfluff
